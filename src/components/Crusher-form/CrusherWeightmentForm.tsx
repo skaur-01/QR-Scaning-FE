@@ -1,6 +1,6 @@
 import { useQRStore } from '@/src/store/crusher';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Box, Button, Divider, Stack, TextField } from '@mui/material';
+import { Box, Button, Divider, TextField } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
