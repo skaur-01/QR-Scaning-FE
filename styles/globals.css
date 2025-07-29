@@ -1,0 +1,63 @@
+@import "tailwindcss";
+/* 
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* Chrome, Safari, Edge (WebKit/Blink) */
+* {
+  scrollbar-width: thin;                 /* Firefox */
+  scrollbar-color: hsl(213, 17%, 87%) transparent; /* thumb track */
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(213, 17%, 87%);
+  border-radius: 9999px;
+  border: 2px solid transparent; /* creates some padding around the thumb */
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(213, 17%, 87%);
+}
+
+/* Optional: hide scrollbar but keep scrolling on touch devices */
+@media (pointer: coarse) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  * {
+    scrollbar-width: none; /* Firefox */
+  }
+}
