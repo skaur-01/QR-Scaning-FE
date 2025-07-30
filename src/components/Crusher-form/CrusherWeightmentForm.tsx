@@ -10,49 +10,79 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 
-const schema = yup.object({
-    user_email: yup.string().email("User Email is not valid").required('User Email is required'),
+export const schema = yup.object({
+    user_email: yup
+      .string()
+      .email('User Email is not valid')
+      .required('User Email is required'),
+  
     slip_id: yup.string().required('Slip ID is required'),
-    order_date: yup.date().typeError('Invalid date').required('Order date is required'),
+  
+    order_date: yup
+      .date()
+      .typeError('Order date must be a valid date')
+      .required('Order date is required'),
+  
     material: yup.string().required('Material is required'),
+  
     crusher_name: yup.string().required('Crusher Name is required'),
     crusher_address: yup.string().required('Crusher Address is required'),
     crusher_gst: yup.string().required('Crusher GST is required'),
+  
     consignee_name: yup.string().required('Consignee Name is required'),
     consignee_category: yup.string().required('Consignee Category is required'),
     consignee_mobile: yup.string().required('Consignee Mobile is required'),
     consignee_gst: yup.string().required('Consignee GST is required'),
+  
     destination: yup.string().required('Destination is required'),
+  
     driver_name: yup.string().required('Driver Name is required'),
     driver_mobile: yup.string().required('Driver Mobile is required'),
+  
     vehicle_owner: yup.string().required('Vehicle Owner is required'),
-    vehicle_number: yup.string().required('Vehicle Number  is required'),
+    vehicle_number: yup.string().required('Vehicle Number is required'),
+  
     veh_capacity: yup
-        .number()
-        .typeError('Vehicle Capacity must be a number')
-        .min(0, 'Vehicle Capacity must be greater than 0'),
+      .number()
+      .typeError('Vehicle Capacity must be a number')
+      .min(0, 'Vehicle Capacity must be greater than 0')
+      .required('Vehicle Capacity is required'),
+  
     veh_unladen: yup
-        .number()
-        .typeError('Unladen Weight must be a number')
-        .min(0, 'Unladen Weight must be greater than 0'),
+      .number()
+      .typeError('Unladen Weight must be a number')
+      .min(0, 'Unladen Weight must be greater than 0')
+      .required('Unladen Weight is required'),
+  
     truck_weight: yup
-        .number()
-        .typeError('Truck Weight must be a number')
-        .min(0, 'Truck Weight must be greater than 0'),
+      .number()
+      .typeError('Truck Weight must be a number')
+      .min(0, 'Truck Weight must be greater than 0')
+      .required('Truck Weight is required'),
+  
     mat_weight: yup
-        .number()
-        .typeError('Material Weight must be a number')
-        .min(0, 'Material Weight must be greater than 0'),
+      .number()
+      .typeError('Material Weight must be a number')
+      .min(0, 'Material Weight must be greater than 0')
+      .required('Material Weight is required'),
+  
     mat_amount: yup
-        .number()
-        .typeError('Material Amount must be a number')
-        .min(0, 'Material Amount must be greater than 0'),
+      .number()
+      .typeError('Material Amount must be a number')
+      .min(0, 'Material Amount must be greater than 0')
+      .required('Material Amount is required'),
+  
     mat_gst: yup.string().required('Material GST is required'),
-    slip_validity: yup.date().typeError('Invalid date').required('Slip Validity is required'),
-    status: yup.string().required('status is required'),
+  
+    slip_validity: yup
+      .date()
+      .typeError('Slip Validity must be a valid date')
+      .required('Slip Validity is required'),
+  
+    status: yup.string().required('Status is required'),
+  
     veh_break_time: yup.string().required('Vehicle Breakdown Time is required'),
-
-});
+  });
 
 type FormValues = yup.InferType<typeof schema>;
 
