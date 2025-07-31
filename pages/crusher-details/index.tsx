@@ -35,7 +35,7 @@ const CrusherDetails = () => {
     };
 
 
-    if (isExpired(data?.slip_validity)) {
+        if(isExpired(data?.slip_validity ? dayjs(data.slip_validity).format("DD-MM-YYYY") : '')) {
 
         return <div className='text-2xl font-semibold text-center mt-[30vh]'> This is expired link!</div>
     }

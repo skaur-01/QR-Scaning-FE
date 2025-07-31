@@ -45,7 +45,7 @@ export const schema = yup.object({
     veh_capacity: yup
         .number()
         .typeError('Vehicle Capacity must be a number')
-        .min(0, 'Vehicle Capacity must be greater than 0'),
+        .min(0, 'Vehicle Capacity must be greater than 0').required("This is required"),
     veh_unladen: yup
         .number()
         .typeError('Unladen Weight must be a number')
@@ -79,7 +79,7 @@ export const schema = yup.object({
 
     status: yup.string().required('Status is required'),
 
-    veh_break_time: yup.string(),
+    veh_break_time: yup.string().required("This is required"),
 });
 
 type FormValues = yup.InferType<typeof schema>;
