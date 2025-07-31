@@ -56,7 +56,7 @@ const GenerateQr: React.FC<Props> = ({ data }) => {
 
   if (!url) return null; // or a loading indicator
 
-  return <QRCodeSVG value={url} size={256} level="M" includeMargin />;
+  return <QRCodeSVG value={url} size={156} level="M" includeMargin />;
 };
 
 export default GenerateQr;

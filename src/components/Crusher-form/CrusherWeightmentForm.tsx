@@ -1,7 +1,7 @@
 import { useQRStore } from '@/src/store/crusher';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, Divider, TextField } from '@mui/material';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { DatePicker, DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import { useRouter } from 'next/router';
@@ -12,84 +12,82 @@ import * as yup from 'yup';
 
 export const schema = yup.object({
     user_email: yup
-      .string()
-      .email('User Email is not valid')
-      .required('User Email is required'),
-  
+        .string()
+        .email('User Email is not valid')
+        .required('User Email is required'),
+
     slip_id: yup.string().required('Slip ID is required'),
-  
+
     order_date: yup
-      .date()
-      .typeError('Order date must be a valid date')
-      .required('Order date is required'),
-  
+        .date()
+        .typeError('Order date must be a valid date')
+        .required('Order date is required'),
+
     material: yup.string().required('Material is required'),
-  
+
     crusher_name: yup.string().required('Crusher Name is required'),
     crusher_address: yup.string().required('Crusher Address is required'),
     crusher_gst: yup.string().required('Crusher GST is required'),
-  
+
     consignee_name: yup.string().required('Consignee Name is required'),
     consignee_category: yup.string().required('Consignee Category is required'),
     consignee_mobile: yup.string().required('Consignee Mobile is required'),
     consignee_gst: yup.string().required('Consignee GST is required'),
-  
+
     destination: yup.string().required('Destination is required'),
-  
+
     driver_name: yup.string().required('Driver Name is required'),
     driver_mobile: yup.string().required('Driver Mobile is required'),
-  
+
     vehicle_owner: yup.string().required('Vehicle Owner is required'),
     vehicle_number: yup.string().required('Vehicle Number is required'),
-  
+
     veh_capacity: yup
-      .number()
-      .typeError('Vehicle Capacity must be a number')
-      .min(0, 'Vehicle Capacity must be greater than 0')
-      .required('Vehicle Capacity is required'),
-  
+        .number()
+        .typeError('Vehicle Capacity must be a number')
+        .min(0, 'Vehicle Capacity must be greater than 0'),
     veh_unladen: yup
-      .number()
-      .typeError('Unladen Weight must be a number')
-      .min(0, 'Unladen Weight must be greater than 0')
-      .required('Unladen Weight is required'),
-  
+        .number()
+        .typeError('Unladen Weight must be a number')
+        .min(0, 'Unladen Weight must be greater than 0')
+        .required('Unladen Weight is required'),
+
     truck_weight: yup
-      .number()
-      .typeError('Truck Weight must be a number')
-      .min(0, 'Truck Weight must be greater than 0')
-      .required('Truck Weight is required'),
-  
+        .number()
+        .typeError('Truck Weight must be a number')
+        .min(0, 'Truck Weight must be greater than 0')
+        .required('Truck Weight is required'),
+
     mat_weight: yup
-      .number()
-      .typeError('Material Weight must be a number')
-      .min(0, 'Material Weight must be greater than 0')
-      .required('Material Weight is required'),
-  
+        .number()
+        .typeError('Material Weight must be a number')
+        .min(0, 'Material Weight must be greater than 0')
+        .required('Material Weight is required'),
+
     mat_amount: yup
-      .number()
-      .typeError('Material Amount must be a number')
-      .min(0, 'Material Amount must be greater than 0')
-      .required('Material Amount is required'),
-  
+        .number()
+        .typeError('Material Amount must be a number')
+        .min(0, 'Material Amount must be greater than 0')
+        .required('Material Amount is required'),
+
     mat_gst: yup.string().required('Material GST is required'),
-  
+
     slip_validity: yup
-      .date()
-      .typeError('Slip Validity must be a valid date')
-      .required('Slip Validity is required'),
-  
+        .date()
+        .typeError('Slip Validity must be a valid date')
+        .required('Slip Validity is required'),
+
     status: yup.string().required('Status is required'),
-  
-    veh_break_time: yup.string().required('Vehicle Breakdown Time is required'),
-  });
+
+    veh_break_time: yup.string(),
+});
 
 type FormValues = yup.InferType<typeof schema>;
 
 const CrusherWeightmentForm = () => {
 
-    const {setData} = useQRStore();
-    const router  = useRouter();
+    const { setData } = useQRStore();
+    const router = useRouter();
     const {
         control,
         handleSubmit,
@@ -601,7 +599,7 @@ const CrusherWeightmentForm = () => {
                                 name="slip_validity"
                                 control={control}
                                 render={({ field, fieldState }) => (
-                                    <DatePicker
+                                    <DateTimePicker
                                         value={field.value ? dayjs(field.value) : null}
                                         onChange={(date: Dayjs | null) => field.onChange(date?.toDate() || null)}
                                         slotProps={{
