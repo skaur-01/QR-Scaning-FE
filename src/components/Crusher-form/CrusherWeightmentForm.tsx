@@ -193,7 +193,7 @@ const CrusherWeightmentForm = () => {
                                 name="order_date"
                                 control={control}
                                 render={({ field, fieldState }) => (
-                                    <DatePicker
+                                    <DateTimePicker
                                         value={field.value ? dayjs(field.value) : null}
                                         onChange={(date: Dayjs | null) => field.onChange(date?.toDate() || null)}
                                         slotProps={{
